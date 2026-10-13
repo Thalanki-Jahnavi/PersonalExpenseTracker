@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        <span class="brand-icon">₹</span>
+        <span>ExpenseTracker</span>
+    </div>
+    <span class="header-label">Personal Finance</span>
+</header>
+
+<main class="container">
+
+    <section class="welcome">
+        <div>
+            <h1>Dashboard</h1>
+            <p>Track your money. Manage your future.</p>
+        </div>
+        <button id="addButton" class="primary-button">
+            + Add Transaction
+        </button>
+    </section>
+
+    <section class="summary-grid">
+        <div class="summary-card income-card">
+            <div class="card-heading">
+                <span>Total Income</span>
+                <span class="card-icon">↗</span>
+            </div>
+            <h2 id="totalIncome">₹0.00</h2>
+            <p>Money received</p>
+        </div>
+
+        <div class="summary-card expense-card">
+            <div class="card-heading">
+                <span>Total Expenses</span>
+                <span class="card-icon">↘</span>
+            </div>
+            <h2 id="totalExpenses">₹0.00</h2>
+            <p>Money spent</p>
+        </div>
+
+        <div class="summary-card balance-card">
+            <div class="card-heading">
+                <span>Remaining Balance</span>
+                <span class="card-icon">₹</span>
+            </div>
+            <h2 id="balance">₹0.00</h2>
+            <p>Income minus expenses</p>
+        </div>
+    </section>
+
+    <section id="formSection" class="panel form-panel">
+        <div class="panel-heading">
+            <div>
+                <h2 id="formTitle">Add Transaction</h2>
+                <p>Enter your income or expense details.</p>
+            </div>
+            <button id="cancelButton" class="secondary-button">
+                Cancel
+            </button>
+        </div>
+
+        <form id="transactionForm">
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="type">Transaction Type</label>
+                    <select id="type" required>
+                        <option value="EXPENSE">Expense</option>
+                        <option value="INCOME">Income</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <input id="category" type="text"
+                           placeholder="e.g. Food, Salary" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Amount (₹)</label>
+                    <input id="amount" type="number"
+                           min="0.01" step="0.01"
+                           placeholder="Enter amount" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input id="date" type="date" required>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="description">Description</label>
+                    <input id="description" type="text"
+                           placeholder="What was this transaction for?"
+                           maxlength="255" required>
+                </div>
+
+            </div>
+
+            <button type="submit" id="saveButton" class="primary-button">
+                Save Transaction
+            </button>
+        </form>
+    </section>
+
+    <section class="panel">
+        <div class="panel-heading">
+            <div>
+                <h2>Recent Transactions</h2>
+                <p>View and manage your transactions.</p>
+            </div>
+
+            <input id="searchInput" class="search-input"
+                   type="search"
+                   placeholder="Search transactions...">
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="transactionTable">
+                </tbody>
+            </table>
+        </div>
+
+        <p id="emptyMessage" class="empty-message">
+            No transactions found.
+        </p>
+    </section>
+
+    <p class="footer-text">
+        Personal Expense Tracker · Manage your finances smartly
+    </p>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
